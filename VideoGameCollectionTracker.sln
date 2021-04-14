@@ -5,6 +5,10 @@ VisualStudioVersion = 16.0.31205.134
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoGameCollectionTracker.UI", "VideoGameCollectionTracker.UI\VideoGameCollectionTracker.UI.csproj", "{558723B0-90A1-4E52-B266-E699DFB489F7}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoGameCollectionTracker.DataAccess", "VideoGameCollectionTracker.DataAccess\VideoGameCollectionTracker.DataAccess.csproj", "{39734116-4F07-4CCD-B0F9-430D94DE85B1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VideoGameCollectionTracker.Model", "VideoGameCollectionTracker.Model\VideoGameCollectionTracker.Model.csproj", "{D3E38F88-700E-4A6D-A9C7-035B0050B863}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +19,14 @@ Global
 		{558723B0-90A1-4E52-B266-E699DFB489F7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{558723B0-90A1-4E52-B266-E699DFB489F7}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{558723B0-90A1-4E52-B266-E699DFB489F7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{39734116-4F07-4CCD-B0F9-430D94DE85B1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{39734116-4F07-4CCD-B0F9-430D94DE85B1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{39734116-4F07-4CCD-B0F9-430D94DE85B1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{39734116-4F07-4CCD-B0F9-430D94DE85B1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D3E38F88-700E-4A6D-A9C7-035B0050B863}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D3E38F88-700E-4A6D-A9C7-035B0050B863}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D3E38F88-700E-4A6D-A9C7-035B0050B863}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D3E38F88-700E-4A6D-A9C7-035B0050B863}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
