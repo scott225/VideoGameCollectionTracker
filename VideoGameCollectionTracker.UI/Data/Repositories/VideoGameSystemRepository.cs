@@ -6,15 +6,20 @@ using VideoGameCollectionTracker.Model;
 
 namespace VideoGameCollectionTracker.UI.Data.Repositories
 {
-  public class VideoGameSystemRepository:BaseRepository
+  public class VideoGameSystemRepository : BaseRepository<VideoGameSystem>, IVideoGameSystemRepository
   {
     public VideoGameSystemRepository(VideoGameCollectionTrackerDbContext dbContext)
       : base(dbContext)
     {
     }
-    public async Task<List<VideoGameSystem>> GetAllAsync()
+    public override async Task<List<VideoGameSystem>> GetAllAsync()
     {
       return await DbContext.VideoGameSystems.ToListAsync();
+    }
+
+    public override async Task<VideoGameSystem> GetById(int id)
+    {
+      return await DbContext.VideoGameSystems.FindAsync(id);
     }
   }
 }

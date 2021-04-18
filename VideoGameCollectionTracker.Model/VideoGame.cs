@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace VideoGameCollectionTracker.Model
 {
-  public class VideoGameSystem
+  public class VideoGame
   {
     [Key]
     public int Id { get; set; }
@@ -12,6 +12,8 @@ namespace VideoGameCollectionTracker.Model
     [MaxLength(50)]
     public string Name { get; set; }
 
-    public ICollection<VideoGame> VideoGames { get; set; }
+    public ICollection<VideoGameSystem> Systems { get; set; }
+
+    public ICollection<Genre> Genres { get; set; }
   }
 }

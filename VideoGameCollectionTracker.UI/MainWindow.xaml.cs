@@ -1,5 +1,5 @@
 ﻿using System.Windows;
-using VideoGameCollectionTracker.UI.ViewModels;
+using VideoGameCollectionTracker.UI.ViewModels.MultipleEntity;
 
 namespace VideoGameCollectionTracker.UI
 {

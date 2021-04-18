@@ -7,15 +7,40 @@ using VideoGameCollectionTracker.Model;
 
 namespace VideoGameCollectionTracker.UI.Data.Repositories
 {
-  public class LookupItemRepository : BaseRepository, ILookupItemRepository
+  public class LookupItemRepository : ILookupItemRepository
   {
-    public LookupItemRepository(VideoGameCollectionTrackerDbContext dbContext) : base(dbContext)
-    {
+    private readonly VideoGameCollectionTrackerDbContext _dbContext;
 
+    public LookupItemRepository(VideoGameCollectionTrackerDbContext dbContext)
+    {
+      _dbContext = dbContext;
     }
+
+    public async Task<IEnumerable<LookupItem>> GetGenresAsync()
+    {
+      return await _dbContext.Genres.AsNoTracking().Select(g =>
+        new LookupItem
+        {
+          Id = g.Id,
+          DisplayMember = g.Name
+        }
+        ).ToListAsync();
+    }
+
+    public async Task<IEnumerable<LookupItem>> GetVideoGamesAsync()
+    {
+      return await _dbContext.VideoGames.AsNoTracking().Select(vg =>
+      new LookupItem
+      {
+        Id = vg.Id,
+        DisplayMember = vg.Name
+      }
+      ).ToListAsync();
+    }
+
     public async Task<IEnumerable<LookupItem>> GetVideoGameSystemsAsync()
     {
-      return await DbContext.VideoGameSystems.AsNoTracking().Select(vgs =>
+      return await _dbContext.VideoGameSystems.AsNoTracking().Select(vgs =>
       new LookupItem
       {
         Id = vgs.Id,

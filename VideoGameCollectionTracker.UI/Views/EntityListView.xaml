@@ -41,7 +41,14 @@
                       ItemTemplate="{StaticResource NavigationItemTemplate}">
         </ItemsControl>
         <local:VideoGameSystemView Grid.Column="1"
-                                   DataContext="{Binding VideoGameSystemViewModel}"/>
+                                   DataContext="{Binding VideoGameSystemViewModel}"
+                                   Visibility="{Binding Visibility,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,FallbackValue=Hidden}"/>
+        <local:VideoGameView Grid.Column="1"
+                                   DataContext="{Binding VideoGameViewModel}"
+                                    Visibility="{Binding Visibility,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,FallbackValue=Hidden}"/>
+        <local:GenreView Grid.Column="1"
+                                   DataContext="{Binding GenreViewModel}"
+                                    Visibility="{Binding Visibility,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,FallbackValue=Hidden}"/>
 
     </Grid>
 </UserControl>

@@ -67,31 +67,52 @@
     </ApplicationDefinition>
     <Compile Include="Commands\RelayCommand.cs" />
     <Compile Include="Data\Repositories\BaseRepository.cs" />
+    <Compile Include="Data\Repositories\GenreRepository.cs" />
+    <Compile Include="Data\Repositories\IBaseRepository.cs" />
+    <Compile Include="Data\Repositories\IGenreRepository.cs" />
     <Compile Include="Data\Repositories\ILookupItemRepository.cs" />
+    <Compile Include="Data\Repositories\IVideoGameRepository.cs" />
+    <Compile Include="Data\Repositories\IVideoGameSystemRepository.cs" />
     <Compile Include="Data\Repositories\LookupItemRepository.cs" />
+    <Compile Include="Data\Repositories\VideoGameRepository.cs" />
     <Compile Include="Data\Repositories\VideoGameSystemRepository.cs" />
     <Compile Include="Events\EventAggregator.cs" />
     <Compile Include="Events\IEventAggregator.cs" />
+    <Compile Include="Events\OpenEntityListMessage.cs" />
     <Compile Include="Events\OpenViewModelMessage.cs" />
+    <Compile Include="Events\ReloadEntitiesMessage.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\EntityListViewModel.cs" />
-    <Compile Include="ViewModels\IBaseViewModel.cs" />
-    <Compile Include="ViewModels\MainViewModel.cs" />
-    <Compile Include="ViewModels\NavigationViewModel.cs" />
-    <Compile Include="ViewModels\PropertyChangedTracker.cs" />
-    <Compile Include="ViewModels\VideoGameSystemViewModel.cs" />
+    <Compile Include="ViewModels\SingleEntity\GenreViewModel.cs" />
+    <Compile Include="ViewModels\MultipleEntity\MultipleEntityViewModel.cs" />
+    <Compile Include="ViewModels\EventAggregatorEntity.cs" />
+    <Compile Include="ViewModels\SingleEntity\SingleEntityViewModel.cs" />
+    <Compile Include="ViewModels\MultipleEntity\EntityListViewModel.cs" />
+    <Compile Include="ViewModels\IViewModel.cs" />
+    <Compile Include="ViewModels\MultipleEntity\MainViewModel.cs" />
+    <Compile Include="ViewModels\MultipleEntity\NavigationViewModel.cs" />
+    <Compile Include="ViewModels\PropertyChangedEntity.cs" />
+    <Compile Include="ViewModels\SingleEntity\VideoGameSystemViewModel.cs" />
+    <Compile Include="ViewModels\SingleEntity\VideoGameViewModel.cs" />
     <Compile Include="Views\EntityListView.xaml.cs">
       <DependentUpon>EntityListView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\GenreView.xaml.cs">
+      <DependentUpon>GenreView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\NavigationView.xaml.cs">
       <DependentUpon>NavigationView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\VideoGameView.xaml.cs">
+      <DependentUpon>VideoGameView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\VideoGameSystemView.xaml.cs">
       <DependentUpon>VideoGameSystemView.xaml</DependentUpon>
     </Compile>
     <Compile Include="Wrappers\BaseModelWrapper.cs" />
+    <Compile Include="Wrappers\GenreWrapper.cs" />
     <Compile Include="Wrappers\LookupItemWrapper.cs" />
     <Compile Include="Wrappers\VideoGameSystemWrapper.cs" />
+    <Compile Include="Wrappers\VideoGameWrapper.cs" />
     <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -108,7 +129,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\GenreView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\NavigationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\VideoGameView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

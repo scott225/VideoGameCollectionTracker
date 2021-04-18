@@ -2,12 +2,11 @@
 
 namespace VideoGameCollectionTracker.UI.Wrappers
 {
-  public class VideoGameSystemWrapper:BaseModelWrapper<VideoGameSystem>
+  public class VideoGameWrapper:BaseModelWrapper<VideoGame>
   {
-    public VideoGameSystemWrapper(VideoGameSystem model) : base(model, model.Id)
+    public VideoGameWrapper(VideoGame model) : base(model,model.Id)
     {
     }
-
     public string Name
     {
       get { return GetValue<string>(); }

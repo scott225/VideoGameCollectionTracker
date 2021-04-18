@@ -28,6 +28,7 @@
                               DataContext="{Binding NavigationViewModel}"/>
         <views:EntityListView Grid.Column="1"
                               Grid.Row="1"
-                              DataContext="{Binding EntityListViewModel}"/>
+                              DataContext="{Binding EntityListViewModel, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
+                              Visibility="{Binding Visibility,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
     </Grid>
 </Window>

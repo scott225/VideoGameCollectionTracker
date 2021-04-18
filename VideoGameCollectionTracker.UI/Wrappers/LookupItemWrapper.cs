@@ -1,12 +1,17 @@
-﻿using VideoGameCollectionTracker.Model;
+﻿using System.Windows.Input;
+using VideoGameCollectionTracker.Model;
+using VideoGameCollectionTracker.UI.Commands;
+using VideoGameCollectionTracker.UI.Events;
 
 namespace VideoGameCollectionTracker.UI.Wrappers
 {
-  public class LookupItemWrapper:BaseModelWrapper<LookupItem>
+  public class LookupItemWrapper<T>:BaseModelWrapper<LookupItem>
   {
-    public LookupItemWrapper(LookupItem model)
+    private readonly IEventAggregator _eventAggregator;
+    public LookupItemWrapper(LookupItem model, IEventAggregator eventAggregator):base(model, model.Id)
     {
-      Model = model;
+      _eventAggregator = eventAggregator;
+      OpenCommand = new RelayCommand(OnOpenViewModel, OnCanOpenViewModel);
     }
 
     public string DisplayMember
@@ -17,6 +22,23 @@ namespace VideoGameCollectionTracker.UI.Wrappers
         Model.DisplayMember = value;
         OnPropertyChanged();
       }
+    }
+
+    public ICommand OpenCommand { get; private set; }
+
+    public bool OnCanOpenViewModel()
+    {
+      return true;
+    }
+
+    public void OnOpenViewModel()
+    {
+      _eventAggregator.SendMessage(
+      new OpenViewModelMessage
+      {
+        Id = Id,
+              EntityType = typeof(T)
+      });
     }
   }
 }

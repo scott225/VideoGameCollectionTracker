@@ -4,6 +4,8 @@ using VideoGameCollectionTracker.Model;
 using VideoGameCollectionTracker.UI.Data.Repositories;
 using VideoGameCollectionTracker.UI.Events;
 using VideoGameCollectionTracker.UI.ViewModels;
+using VideoGameCollectionTracker.UI.ViewModels.MultipleEntity;
+using VideoGameCollectionTracker.UI.ViewModels.SingleEntity;
 
 namespace VideoGameCollectionTracker.UI
 {
@@ -15,12 +17,25 @@ namespace VideoGameCollectionTracker.UI
     private void Application_Startup(object sender, StartupEventArgs e)
     {
       var dbContext = new VideoGameCollectionTrackerDbContext();
-      var eventAggregator = new EventAggregator();
+
+      //repos
+      var videoGameSystemRepository = new VideoGameSystemRepository(dbContext);
+      var videoGameRepository = new VideoGameRepository(dbContext);
+      var genreRepository = new GenreRepository(dbContext);
       var lookupRepository = new LookupItemRepository(dbContext);
+
+      var eventAggregator = new EventAggregator();
+
+      //view models
       var navigationViewModel = new NavigationViewModel(eventAggregator);
-      var videoGameSystemViewModel = new VideoGameSystemViewModel(eventAggregator);
-      var entityListViewModel = new EntityListViewModel<VideoGameSystem>(eventAggregator, lookupRepository, videoGameSystemViewModel);
-      var mainViewModel = new MainViewModel(eventAggregator,navigationViewModel,entityListViewModel);
+      var videoGameSystemViewModel = new VideoGameSystemViewModel(eventAggregator, videoGameSystemRepository);
+      var videoGameViewModel = new VideoGameViewModel(eventAggregator, videoGameRepository);
+      var genreViewModel = new GenreViewModel(eventAggregator, genreRepository);
+      var videoGameListViewModel = new EntityListViewModel<VideoGame>(eventAggregator, lookupRepository, videoGameSystemViewModel, videoGameViewModel, genreViewModel);
+      var videoGameSystemListViewModel = new EntityListViewModel<VideoGameSystem>(eventAggregator, lookupRepository, videoGameSystemViewModel, videoGameViewModel, genreViewModel);
+      var genreListViewModel = new EntityListViewModel<Genre>(eventAggregator, lookupRepository, videoGameSystemViewModel, videoGameViewModel, genreViewModel);
+      var mainViewModel = new MainViewModel(eventAggregator, lookupRepository, navigationViewModel, videoGameListViewModel, videoGameSystemListViewModel, genreListViewModel);
+
       var mainWindow = new MainWindow(mainViewModel);
       mainWindow.Show();
     }

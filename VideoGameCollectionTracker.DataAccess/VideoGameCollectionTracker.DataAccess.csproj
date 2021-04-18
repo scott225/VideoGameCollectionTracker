@@ -55,6 +55,22 @@
     <Compile Include="Migrations\202104141705174_added video game systems.designer.cs">
       <DependentUpon>202104141705174_added video game systems.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202104151709225_added video games.cs" />
+    <Compile Include="Migrations\202104151709225_added video games.designer.cs">
+      <DependentUpon>202104151709225_added video games.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104151712497_added video games 2.cs" />
+    <Compile Include="Migrations\202104151712497_added video games 2.designer.cs">
+      <DependentUpon>202104151712497_added video games 2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104171521542_added genres.cs" />
+    <Compile Include="Migrations\202104171521542_added genres.designer.cs">
+      <DependentUpon>202104171521542_added genres.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202104171524370_added genres2.cs" />
+    <Compile Include="Migrations\202104171524370_added genres2.designer.cs">
+      <DependentUpon>202104171524370_added genres2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="VideoGameCollectionTrackerDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -72,6 +88,18 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202104141705174_added video game systems.resx">
       <DependentUpon>202104141705174_added video game systems.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104151709225_added video games.resx">
+      <DependentUpon>202104151709225_added video games.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104151712497_added video games 2.resx">
+      <DependentUpon>202104151712497_added video games 2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104171521542_added genres.resx">
+      <DependentUpon>202104171521542_added genres.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202104171524370_added genres2.resx">
+      <DependentUpon>202104171524370_added genres2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

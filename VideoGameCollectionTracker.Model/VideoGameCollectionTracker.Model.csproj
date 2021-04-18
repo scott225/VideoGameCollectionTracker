@@ -42,7 +42,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Genre.cs" />
     <Compile Include="LookupItem.cs" />
+    <Compile Include="VideoGame.cs" />
     <Compile Include="VideoGameSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

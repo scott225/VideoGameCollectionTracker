@@ -7,6 +7,9 @@ namespace VideoGameCollectionTracker.DataAccess
   public class VideoGameCollectionTrackerDbContext : DbContext
   {
     public DbSet<VideoGameSystem> VideoGameSystems { get; set; }
+    public DbSet<VideoGame> VideoGames { get; set; }
+
+    public DbSet<Genre> Genres { get; set; }
 
     public VideoGameCollectionTrackerDbContext() : base("VideoGameCollectionTrackerDb")
     {

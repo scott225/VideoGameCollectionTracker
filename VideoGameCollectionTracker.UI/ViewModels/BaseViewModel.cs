@@ -1,37 +1,36 @@
 ﻿using System.Threading.Tasks;
-using System.Windows.Input;
-using VideoGameCollectionTracker.UI.Commands;
+using System.Windows;
 using VideoGameCollectionTracker.UI.Events;
 
 namespace VideoGameCollectionTracker.UI.ViewModels
 {
-  public abstract class BaseViewModel : PropertyChangedTracker, IBaseViewModel
+  public abstract class BaseViewModel : EventAggregatorEntity,IViewModel
   {
-    protected readonly IEventAggregator EventAggregator;
+    private Visibility _visibility;
 
-    public BaseViewModel(IEventAggregator eventAggregator)
+    public BaseViewModel(IEventAggregator eventAggregator):base(eventAggregator)
     {
-      EventAggregator = eventAggregator;
-      OpenCommand = new RelayCommand(OnOpenViewModel, OnCanOpenViewModel);
+      
     }
 
-    public ICommand OpenCommand { get; private set; }
+    public Visibility Visibility
+    {
+      get { return _visibility; }
+      set
+      {
+        _visibility = value;
+        OnPropertyChanged();
+      }
+    }
+
+    public string Name
+    {
+      get
+      {
+        return GetType().Name;
+      }
+    }
 
     public abstract Task LoadAsync();
-
-    private void OnOpenViewModel()
-    {
-      EventAggregator.SendMessage(
-        new OpenViewModelMessage
-        {
-          Id = 0, //TODO: 0 or null?
-          EntityType = typeof(VideoGameSystemViewModel)
-        });
-    }
-
-    private bool OnCanOpenViewModel()
-    {
-      return true;
-    }
   }
 }
