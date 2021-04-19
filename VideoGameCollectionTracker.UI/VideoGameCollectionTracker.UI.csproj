@@ -82,6 +82,7 @@
     <Compile Include="Events\OpenViewModelMessage.cs" />
     <Compile Include="Events\ReloadEntitiesMessage.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
+    <Compile Include="ViewModels\DataErrorEntity.cs" />
     <Compile Include="ViewModels\SingleEntity\GenreViewModel.cs" />
     <Compile Include="ViewModels\MultipleEntity\MultipleEntityViewModel.cs" />
     <Compile Include="ViewModels\EventAggregatorEntity.cs" />
@@ -102,6 +103,11 @@
     <Compile Include="Views\NavigationView.xaml.cs">
       <DependentUpon>NavigationView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\SaveDelete.xaml.cs">
+      <DependentUpon>SaveDelete.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Services\IMessageDialogService.cs" />
+    <Compile Include="Views\Services\MessageDialogService.cs" />
     <Compile Include="Views\VideoGameView.xaml.cs">
       <DependentUpon>VideoGameView.xaml</DependentUpon>
     </Compile>
@@ -134,6 +140,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\NavigationView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SaveDelete.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

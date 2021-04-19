@@ -35,18 +35,30 @@
             <ColumnDefinition Width="auto"/>
             <ColumnDefinition Width="auto"/>
         </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+        </Grid.RowDefinitions>
 
         <ItemsControl Grid.Column="0"
+                      Grid.Row="0"
                       ItemsSource="{Binding Entities}"
                       ItemTemplate="{StaticResource NavigationItemTemplate}">
         </ItemsControl>
+        <Button Grid.Column="0" 
+                Grid.Row="1" 
+                Content="New" 
+                Command="{Binding NewCommand}"/>
         <local:VideoGameSystemView Grid.Column="1"
+                                   Grid.Row="0"
                                    DataContext="{Binding VideoGameSystemViewModel}"
                                    Visibility="{Binding Visibility,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,FallbackValue=Hidden}"/>
         <local:VideoGameView Grid.Column="1"
+                             Grid.Row="0"
                                    DataContext="{Binding VideoGameViewModel}"
                                     Visibility="{Binding Visibility,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,FallbackValue=Hidden}"/>
         <local:GenreView Grid.Column="1"
+                         Grid.Row="0"
                                    DataContext="{Binding GenreViewModel}"
                                     Visibility="{Binding Visibility,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,FallbackValue=Hidden}"/>
 

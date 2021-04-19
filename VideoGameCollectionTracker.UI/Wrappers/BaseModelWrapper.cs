@@ -3,7 +3,7 @@ using VideoGameCollectionTracker.UI.ViewModels;
 
 namespace VideoGameCollectionTracker.UI.Wrappers
 {
-  public class BaseModelWrapper<T>:PropertyChangedEntity
+  public class BaseModelWrapper<T>:DataErrorEntity
   {
     public BaseModelWrapper(T model, int id)
     {
@@ -26,7 +26,7 @@ namespace VideoGameCollectionTracker.UI.Wrappers
     {
       typeof(T).GetProperty(propertyName).SetValue(Model, value);
       OnPropertyChanged(propertyName);
-      //ValidateDataAnnotations(Model, value, propertyName);
+      ValidateDataAnnotations(Model, value, propertyName);
     }
   }
 }

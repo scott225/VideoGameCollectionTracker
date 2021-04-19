@@ -4,6 +4,7 @@ using System.Windows.Input;
 using VideoGameCollectionTracker.Model;
 using VideoGameCollectionTracker.UI.Commands;
 using VideoGameCollectionTracker.UI.Events;
+using VideoGameCollectionTracker.UI.Views.Services;
 
 namespace VideoGameCollectionTracker.UI.ViewModels.MultipleEntity
 {
@@ -11,8 +12,9 @@ namespace VideoGameCollectionTracker.UI.ViewModels.MultipleEntity
   {
     private IEventAggregator _eventAggregator;
 
-    public NavigationViewModel(IEventAggregator eventAggregator)
-      : base(eventAggregator)
+    public NavigationViewModel(IEventAggregator eventAggregator,
+      IMessageDialogService messageDialogService)
+      : base(eventAggregator, messageDialogService)
     {
       _eventAggregator = eventAggregator;
       OpenCommand = new RelayCommand(OnOpenViewModel, OnCanOpenViewModel);
@@ -20,7 +22,7 @@ namespace VideoGameCollectionTracker.UI.ViewModels.MultipleEntity
 
     public ICommand OpenCommand { get; private set; }
 
-    public override Task LoadAsync()
+    public override Task LoadAsyncBase()
     {
       return null;
     }

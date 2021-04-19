@@ -3,20 +3,37 @@ using System.Threading.Tasks;
 using VideoGameCollectionTracker.Model;
 using VideoGameCollectionTracker.UI.Data.Repositories;
 using VideoGameCollectionTracker.UI.Events;
+using VideoGameCollectionTracker.UI.Views.Services;
 using VideoGameCollectionTracker.UI.Wrappers;
 
 namespace VideoGameCollectionTracker.UI.ViewModels.SingleEntity
 {
   public class GenreViewModel : SingleEntityViewModel<Genre>
   {
-    public GenreViewModel(IEventAggregator eventAggregator, IBaseRepository<Genre> repository) : base(eventAggregator, repository)
+    public GenreViewModel(IEventAggregator eventAggregator, 
+      IMessageDialogService messageDialogService,
+      IBaseRepository<Genre> repository) : base(eventAggregator, messageDialogService, repository)
     {
     }
 
-    public async override Task LoadAsync()
+    protected override void CreateModelWrapper(Genre model)
     {
-      var model = await Repository.GetById(Id);
-      ModelWrapper = new GenreWrapper(model,model.Id);
+      ModelWrapper = new GenreWrapper(model, model.Id);
+    }
+
+    protected async override Task LoadAsync()
+    {
+      //if(Id > 0)
+      //{
+        var model = await Repository.GetById(Id);
+        ModelWrapper = new GenreWrapper(model, model.Id);
+      //}
+      //else
+      //{
+      //  var model = new Genre();
+      //  Repository.Add(model);
+      //  ModelWrapper = new GenreWrapper(model, model.Id);
+      //}
     }
   }
 }

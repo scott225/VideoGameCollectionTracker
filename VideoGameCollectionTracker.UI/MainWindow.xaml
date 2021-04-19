@@ -20,7 +20,6 @@
         <Menu Grid.Column="0" 
               Grid.Row="0"
               Grid.ColumnSpan="2">
-            <MenuItem Header="File"/>
         </Menu>
 
         <views:NavigationView Grid.Column="0"
@@ -29,6 +28,6 @@
         <views:EntityListView Grid.Column="1"
                               Grid.Row="1"
                               DataContext="{Binding EntityListViewModel, Mode=OneWay, UpdateSourceTrigger=PropertyChanged}"
-                              Visibility="{Binding Visibility,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged}"/>
+                              Visibility="{Binding Visibility,Mode=TwoWay,UpdateSourceTrigger=PropertyChanged,FallbackValue=Hidden}"/>
     </Grid>
 </Window>

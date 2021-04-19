@@ -1,9 +1,13 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Threading.Tasks;
+using System.Windows.Input;
 using VideoGameCollectionTracker.Model;
+using VideoGameCollectionTracker.UI.Commands;
 using VideoGameCollectionTracker.UI.Data.Repositories;
 using VideoGameCollectionTracker.UI.Events;
+using VideoGameCollectionTracker.UI.Views.Services;
 using VideoGameCollectionTracker.UI.Wrappers;
 
 namespace VideoGameCollectionTracker.UI.ViewModels.MultipleEntity
@@ -18,15 +22,17 @@ namespace VideoGameCollectionTracker.UI.ViewModels.MultipleEntity
     private List<IViewModel> _viewModels;
 
     public EntityListViewModel(IEventAggregator eventAggregator,
+      IMessageDialogService messageDialogService,
       ILookupItemRepository lookupItemRepository,
       IViewModel videoGameSystemViewModel,
       IViewModel videoGameViewModel,
       IViewModel genreViewModel)
-      : base(eventAggregator)
+      : base(eventAggregator,messageDialogService)
     {
       _lookupItemRepository = lookupItemRepository;
       EventAggregator.RegisterHandler<ReloadEntitiesMessage>(OnReloadEntitiesMessage);
       Entities = new ObservableCollection<LookupItemWrapper<T>>();
+      NewCommand = new RelayCommand(OnCreateNew, OnCanCreateNew);
       _eventAggregator = eventAggregator;
       _videoGameSystemViewModel = videoGameSystemViewModel;
       _videoGameViewModel = videoGameViewModel;
@@ -38,6 +44,10 @@ namespace VideoGameCollectionTracker.UI.ViewModels.MultipleEntity
         genreViewModel
       };
     }
+
+
+
+    public ICommand NewCommand { get; private set; }
 
     public IViewModel VideoGameSystemViewModel
     {
@@ -72,7 +82,7 @@ namespace VideoGameCollectionTracker.UI.ViewModels.MultipleEntity
 
     public ObservableCollection<LookupItemWrapper<T>> Entities { get; set; }
 
-    public override async Task LoadAsync()
+    public override async Task LoadAsyncBase()
     {
       if (Visibility == System.Windows.Visibility.Hidden) return;
       Entities.Clear();
@@ -116,7 +126,22 @@ namespace VideoGameCollectionTracker.UI.ViewModels.MultipleEntity
 
     private async void OnReloadEntitiesMessage(ReloadEntitiesMessage obj)
     {
-      await LoadAsync();
+      await LoadAsyncBase();
+    }
+    private bool OnCanCreateNew()
+    {
+      return true;
+    }
+
+    private Task OnCreateNew()
+    {
+      _eventAggregator.SendMessage(
+        new OpenViewModelMessage
+        {
+          Id = 0,
+          EntityType = typeof(T)
+        });
+      return Task.CompletedTask;
     }
   }
 }

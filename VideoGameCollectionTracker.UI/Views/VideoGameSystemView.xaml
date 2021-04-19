@@ -18,7 +18,7 @@
                     Orientation="Vertical">
             <Label Content="Name:"/>
             <TextBox Text="{Binding ModelWrapper.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <Button Content="Save" Command="{Binding SaveCommand}"/>
+            <local:SaveDelete/>
         </StackPanel>
     </Grid>
 </UserControl>

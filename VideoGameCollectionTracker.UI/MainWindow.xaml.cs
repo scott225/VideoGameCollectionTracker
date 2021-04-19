@@ -20,7 +20,7 @@ namespace VideoGameCollectionTracker.UI
 
     private void OnMainWindow_Loaded(object sender, RoutedEventArgs e)
     {
-      _mainViewModel.LoadAsync();
+      _mainViewModel.LoadAsyncBase();
     }
   }
 }

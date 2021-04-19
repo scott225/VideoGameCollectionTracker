@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using VideoGameCollectionTracker.Model;
 using VideoGameCollectionTracker.UI.Data.Repositories;
 using VideoGameCollectionTracker.UI.Events;
+using VideoGameCollectionTracker.UI.Views.Services;
 
 namespace VideoGameCollectionTracker.UI.ViewModels.MultipleEntity
 {
@@ -15,12 +16,13 @@ namespace VideoGameCollectionTracker.UI.ViewModels.MultipleEntity
     private List<IViewModel> _viewModels;
 
     public MainViewModel(IEventAggregator eventAggregator,
+      IMessageDialogService messageDialogService,
       ILookupItemRepository lookupItemRepository,
       IViewModel navigationViewModel,
       IViewModel videoGameListViewModel,
       IViewModel videoGameSystemListViewModel,
       IViewModel genreListViewModel)
-      : base(eventAggregator)
+      : base(eventAggregator,messageDialogService)
     {
       NavigationViewModel = navigationViewModel;
       eventAggregator.RegisterHandler<OpenEntityListMessage>(OnOpenEntityListMessage);
@@ -56,7 +58,7 @@ namespace VideoGameCollectionTracker.UI.ViewModels.MultipleEntity
         EntityListViewModel = _genreListViewModel;
         _genreListViewModel.Visibility = System.Windows.Visibility.Visible;
       }
-      await EntityListViewModel.LoadAsync();
+      await EntityListViewModel.LoadAsyncBase();
     }
 
     public IViewModel NavigationViewModel { get; private set; }
@@ -68,7 +70,7 @@ namespace VideoGameCollectionTracker.UI.ViewModels.MultipleEntity
       } 
     }
 
-    public override Task LoadAsync()
+    public override Task LoadAsyncBase()
     {
       return null;
     }

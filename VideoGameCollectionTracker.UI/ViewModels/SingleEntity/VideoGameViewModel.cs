@@ -3,6 +3,7 @@ using System.Threading.Tasks;
 using VideoGameCollectionTracker.Model;
 using VideoGameCollectionTracker.UI.Data.Repositories;
 using VideoGameCollectionTracker.UI.Events;
+using VideoGameCollectionTracker.UI.Views.Services;
 using VideoGameCollectionTracker.UI.Wrappers;
 
 namespace VideoGameCollectionTracker.UI.ViewModels.SingleEntity
@@ -13,7 +14,8 @@ namespace VideoGameCollectionTracker.UI.ViewModels.SingleEntity
     private ObservableCollection<Genre> _genres;
 
     public VideoGameViewModel(IEventAggregator eventAggregator,
-      IVideoGameRepository repository) : base(eventAggregator, repository)
+      IMessageDialogService messageDialogService,
+      IVideoGameRepository repository) : base(eventAggregator, messageDialogService, repository)
     {
       VideoGameSystems = new ObservableCollection<VideoGameSystem>();
       Genres = new ObservableCollection<Genre>();
@@ -39,7 +41,12 @@ namespace VideoGameCollectionTracker.UI.ViewModels.SingleEntity
       }
     }
 
-    public async override Task LoadAsync()
+    protected override void CreateModelWrapper(VideoGame model)
+    {
+      ModelWrapper = new VideoGameWrapper(model);
+    }
+
+    protected async override Task LoadAsync()
     {
       VideoGameSystems.Clear();
       Genres.Clear();

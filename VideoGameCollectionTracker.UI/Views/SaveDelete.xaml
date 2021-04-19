@@ -1,4 +1,4 @@
-﻿<UserControl x:Class="VideoGameCollectionTracker.UI.Views.GenreView"
+﻿<UserControl x:Class="VideoGameCollectionTracker.UI.Views.SaveDelete"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
@@ -13,12 +13,9 @@
         <Grid.RowDefinitions>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <StackPanel Grid.Row="0" 
-                    Grid.Column="0"
-                    Orientation="Vertical">
-            <Label Content="Name:"/>
-            <TextBox Text="{Binding ModelWrapper.Name, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}"/>
-            <local:SaveDelete/>
+        <StackPanel Orientation="Horizontal">
+            <Button Content="Save" Command="{Binding SaveCommand}"/>
+            <Button Content="Delete" Command="{Binding DeleteCommand}"/>
         </StackPanel>
     </Grid>
 </UserControl>

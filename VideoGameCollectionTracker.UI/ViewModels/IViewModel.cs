@@ -5,7 +5,7 @@ namespace VideoGameCollectionTracker.UI.ViewModels
 {
   public interface IViewModel
   {
-    Task LoadAsync();
+    Task LoadAsyncBase();
     Visibility Visibility { get; set; }
     string Name { get; }
   }
